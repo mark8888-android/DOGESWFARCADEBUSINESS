@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .font-arcade {
+    font-family: 'Press Start 2P', cursive, monospace;
+  }
+  .font-retro {
+    font-family: 'Space Mono', monospace;
+  }
+}
+
+/* CRT Screen Effect */
+.crt-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.crt-container::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  z-index: 20;
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+}
+
+.crt-container::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: radial-gradient(circle at center, transparent 65%, rgba(0, 0, 0, 0.6) 100%);
+  pointer-events: none;
+  z-index: 21;
+}
+
+@keyframes arcade-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+.animate-arcade-blink {
+  animation: arcade-pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom scrollbar for game library & logs */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #12141c;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2e3d;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f6a821;
+}
